@@ -44,6 +44,12 @@ func add(text string) error {
 		Text: text,
 		Done: false,
 	}
+	b, err := proto.Marshal(task)
+	_ = b
+	if err != nil{
+		return fmt.Errorf("could not encode task: %v", err)
+	}
+
 	fmt.Println(proto.MarshalTextString(task))
 	//fmt.Println(task)
 	return nil
